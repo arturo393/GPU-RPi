@@ -5,7 +5,7 @@
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[11pt,twoside]{report}
+\documentclass[11pt,oneside,titlepage]{article}
 
 % Esto es para poder escribir acentos directamente:
 %\usepackage[latin1]{inputenc}
@@ -23,25 +23,52 @@
 \usepackage{graphicx}
 % Paquetes de la AMS:
 \usepackage{amsmath, amsthm, amsfonts}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{
+\chead{
+\rhead{\bfseries Informe Semanal de Actividades Realizadas }
+\lfoot{From: K. Grant}
+\cfoot{To: Dean A. Smith}
+\rfoot{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+}}
 
 %\pagestyle{headings}
-\pagestyle{myheadings}
-\markboth{Informe Semanal de Actividades Realizadas}{Informe Semanal de Actividades Realizadas}
+%\pagestyle{myheadings}
+%\markright{Informe Semanal de Actividades Realizadas}
 \begin{document}
-\title{\color{red}Informe Semanal de Actvividades Realizadas}
+\title{Informe Semanal de Actvividades Realizadas}
 \author{Nombre: Arturo Veras\\ 
-Supervisor: Claudio Torres\\
-Empresa: CCTAVAL\\
+	Supervisor: Claudio Torres\\
+	Empresa: CCTVAL \\
 Tipo de Práctica: Profesional}
 %\date{\color{green}December 2005}
-\maketitle
+%\maketitle
 %\input{portada.tex}
 %\newpage
 %\tableofcontents
 %\listoffigures % to produce list of figures
 %\listoftables % to produce list of tables
 %\newpage
-\subsection*{Semana 1,  del $13/01/14$ al $17/01/14$}
+\section*{Informe Semanal de Actividades Realizadas}
+\begin{center}
+
+\begin{tabular}{|r|l|}
+\hline 
+Nombre:  & Arturo Veras\\ 
+\hline 
+Supervisor & Claudio Torres \\ 
+\hline 
+Empresa: & CCTVAL \\ 
+\hline 
+Tipo de Práctica: & Profesional \\ 
+\hline 
+\end{tabular} 
+
+\end{center}
+\paragraph{Semana , del 13/01/14 al 17/01/14}
 
 El trabajo principal se centra en conectar una GPU (Graphic Card Unit) a una
 Raspberry Pi (le llamaremos RPi desde ahora), específicamente se quiere
@@ -75,68 +102,101 @@ mercado.  Esta alternativa tambin fue descartada porque no cumple los
 requerimientos. Se encontró un dispositivo que potencialmente puede realizar lo
 que necesitamos. 
 
-
-
-The FBFPE4L-PM0FBF60A is a PCIe Adapter. The PE4L is designed for Notebook PCs that
-converts PCI Express 1X add-on Card to ExpressCard or mPCIe connecter or PCI
-Express slot. As PCI Express x1 connector is edge-free / multi-lane, x4, x8 and
-x16 PCIe Cards are also available. This adapter allows you to use your existing
-PCI-E 1X Card in the notebook PC or Desktop PC for test. or AD-DC12V adapter).
-The RPi doesn't have a mPCIe interface so this adapter would be an option in
-the case of changing the RPi for another embedded system with MPCIe interface.
-
-\subsection*{Semana 2, del 20/01/14 al 24/01/14}
+\subsection*{Semana 2, del $20/01/14$ al $24/01/14$}
 
 Las tareas de esta semana consisten en seguir buscando otras alternativas ya que las
 anteriores han sido descartas por el momento.
 
-El chip USB2380 es un controlador PCIe 1.0 a USB 2.0. El problema es que tenemos que
-desarrollar una tarjeta y realizar el driver. Es posible pero escapa de nuestros
-conocimientos en estos momentos, se necesita más investigación y estudio para realizar
-este tipo de trabajos, además requiere tiempo. 
+Investigando se encontró el dispositivo \textbf{USB2380}. USB2380 un controlador
+PCIe 1.0 a USB 2.0. El problema es que para nuestro propósito se necesitará
+desarrollar nuestro controlador. Por el momento creemos que esta solución esta
+fuera de los objetivos principales, es más, aún no se posee información más
+detallada sobre el desarrollo de dicha tarjeta. Otro problema que es que no
+sabemos si podemos adquirir el dispositivo a tiempo para realizar pruebas.
 
-Como no se ha encontrado un adaptador directo entre PCIe y USB se decide por estudiar la
-posibilidad de realizar una tarjeta que tenga ambas interfaces y que cumpla con nuestros
-requerimientos. Las posibilidades son : \textbf{MCS990} PCIe to 4-Port USB 2.0 Host
-Controller y \textbf{USB2380} PCIe 1.0 to USB 2.0 controller.
+Como no se ha encontrado un adaptador directo entre PCIe y USB se decide por
+estudiar la posibilidad de realizar una tarjeta que tenga ambas interfaces y que
+cumpla con nuestros requerimientos. Las posibilidades son : \textbf{MCS990} PCIe
+to 4-Port USB 2.0 Host Controller y \textbf{USB2380} PCIe 1.0 to USB 2.0
+controller.
 
+Sin embargo en cualquier caso la conexión de cualquiera de estos dos dispositivos
+se realiza a través slot PCIe 1x. La GT640 tiene una interfaz PCIe 16x, esto no
+produce ningún problema ya que el protocolo PCIe, en este caso, se adapta al slot
+1x disminuyendo el ancho de banda.
 
-The GT640 has a PCIe 3.0 16x interface, the host controllers support PCIe 1.1. In PCIe there is no problems with the connectivity with older versions. To connect the GT640 we need a PCIe 1x to 16x Powered Flexible Riser. In theory we have all we need to build a prototype that does the job. The next question is if the GT640 is going to be recognized by the RPi, there is driver support for this application? can we use the existing legacy drivers or we have to implement a new one?
+Se descarto completamente la posibilidad de usar el chip \textbf{MCS9990} porque
+no cumple con los requerimientos.
 
-In the meanwhile we are in contacts with the vendors to to see what they say about the feasibility of the project.
+Otra alternativa que se encontro es el \textbf{SBC-A510 Single Board Computer}. Lo
+importante de esta tarjeta es que tiene un puerto mPCIe que podemos utilizar junto
+al adaptador \textbf{PE4L-PM060A}. Esta idea la dejamos en stand by.
 
-January Wednesday 22
+Por el momento no se puede conectar la RPi a una tarjeta PCIe. La nueva estrategia
+será encontrar formas de dejar la tarjeta gráfica como un periférico que pueda
+accederse desde un puerto USB asi como dispositvo plug and play.
 
-Some of the vendors respond to our emails but the did't understand the requirements that we need. We explained and still we are waiting for the response.
+\subsection*{Semana 3, del $27/01/14$ al $31/01/14$}
 
-We are studying MCS9990. There is an schematic circuit to make the board, but this is not what we need. Therefore we need to make a deep study of PCIe protocol and the MCS9990 chip to develop the PCIe to USB 2.0 adapter. This option is out of discussion because the time consuming of developing time is very high.
+Una de las nuevas estrategias es utilizar una placa madre que tenga un puerto
+PCIe. La idea es usar un hardware de bajo consto con los requerimientos mínimos
+para que la GT640 funcione. Para esto existen alternativas como placas madres
+Micro-ATX, Mini-ITX, Nano-ITX y Pico-ITX, claro está que a medido que la placa
+es más pequeña más costosa será. 
 
-In conclusion any attempt to create an interface using a chip is discarded.
+Además, insvestigando hemos encontrado una solución muy parecida a lo que
+queremos, se trata de una tarjeta desarrollo de llamada Kayla, básicamente es
+un computador pequeño que reune todas las características para trabajar con la
+tarjeta GT640.  
 
-January Thursday 23
+Se encontro otro dispositivo que en primera instancia cumple con nuestros
+requerimientos. La \textbf{USB3380EVB} es una tarjeta de desarrollo que tiene la
+version USB 3.0 del \textbf{USB2380} chip previamente mencionado. Esta tarjeta
+posee un slot PCIe 1x. Envíamos correos preguntando la factibilidad de nuestro
+proyecto.
 
-The SBC-A510 Single Board Computer. is a mini-ATX compliant, single board computer. Important features:
+Se encontro otra tarjeta de desarrollo, el \textbf{86 Duino plataform} la cual
+posee el puerto mPCIe el cual podemos utilizar con el adaptador
+\textbf{PE4L-PM060A}.
 
-Single board computer implemented by the combination of a CM-A510 module and a SB-A510 baseboard. Mini-ATX form factor.
-1GB DDR3
-PCI Express and PCI extension interfaces
-The price for 1k unit: USD $65. For 1 quantity 2.5*$65 = USD $163
-January Friday 24
+Hasta el momento tenemos las alternativas mencionada, realizamos el presupuesto y
+estamos a la espera de la desición.
 
-We couldn't find a definitely solution to the problem. This is the summary so far:
+La alternativa más factible es comprar la \textbf{USB3380EV} y desarrollar el
+software necesario para nuestra aplicación. El problema es que el distribuidor
+esta de vacaciones por lo que tenemos que esperar hasta la próxima semana.
 
-Found a USB 2380 board that can we use but the vendor did not contact us yet.
-Use the PE4L-PM060A in the case of acquiring a board with the mPCIe.
-Completely ruled out the solution to implement the MCS9990 chip or similar, not a feasible solution.
-The project will take another tack. Since we can not, for the moment, to find a solution to connect the RPI to a PCI card, the new approach will be to seek ways to connect the GPU to some device that that we can transfer data through an USB port. The options we have high to low priority.
+Mientras estudiamos la posibilidad de utilizar un computador de bajo costo como
+interfaz entre la GPU y cualquier host. La conexión sería a trav\'es del USB de
+forma plg and play.
 
-Development boards with PCIe slot that we can buy this week or soon.
-mPCIe to PCIe adapter so we can use the development board that we already have.
-Build a cheap computer to use as PCIe interface.
-Finally we decided to use the USB port to communicate with the GPU to make a Plug and Play device. There can be another ideas like use the Ethernet port but the USB is going to be the main work. So, we need to find solutions to the problem of connecting the Host PC to the RPi or some other device which in turn will be connected to the GPU.
-\subsection*{Semana 3, del 27/01/14 al 31/01/14}
-\subsection*{Semana , del 03/02/14 al 07/02/14}
+La idea de conectar una RPi a la GPU se descarto completamente ya que la RPi no 
+tiene la arquitectura necesaria para que CUDA, el software de desarrollo de las GPU de Nvidia, funcione.
 
+\subsection*{Semana 4, del $03/02/14 al 06/02/14$}
 
+Esta semana se realizó una revisión de todas las ideas que estaban en el
+tapete. Nos dimos cuenta que estabamos dando vueltas y era necesario tener una
+nueva estrategia para resolver el problema. Decidimos volver a comenzar de
+nuevo, ya con las demás ideas descartadas. Ya que aún no hemos tenido
+respuestas satisfactorias sobre el controlador del USB3380 EVK, hemos decidido
+construir un computador barato que cumpla con los requerimientos para instalar
+la GT640 y CUDA. La idea sobre esto es tener un dispositivo portatil plug and
+play, para esto estudiaremos la posibilidad de realizar a traves del puerto usb
+o del ethernet. 
+
+Por otro lado en caso de que compremos la tarjeta USB3380 EVK y el desarrollo
+del driver sea ráido, hemos buscado computadores de bajo costo para realizar un
+cluster. Hemos encontrado el ODROID. Es un computador muy barato para las
+grandes características que posee, es compatublible con el driver NVidia y
+CUDA.
+
+\subsection*{Semana 5, del $10/02/14 al 14/02/14$}
+
+Se compro el computador de bajo costo para realizar las primeras pruebas.
+Ademas se realizó un estudio sobre como conectar el comptuador de una forma plug
+and play, las opciones son utilizar el puerto Ethernet o, mejor aún, realizar la
+conexión a trav\'es USB.
 
 \end{document}
+
