@@ -16,6 +16,7 @@
 \usepackage{sectsty}
 \usepackage{fncychap}
 \usepackage{color}
+\usepackage{comment}
 
 % Esto es para que el LaTeX sepa que el texto est en espaol:
 \usepackage[spanish]{babel}
@@ -136,7 +137,7 @@ Por el momento no se puede conectar la RPi a una tarjeta PCIe. La nueva estrateg
 será encontrar formas de dejar la tarjeta gráfica como un periférico que pueda
 accederse desde un puerto USB asi como dispositvo plug and play.
 
-\subsection*{Semana 3, del $27/01/14 al 31/01/14$}
+\subsection*{Semana 3, del 27/01/14 al 31/01/14}
 
 Una de las nuevas estrategias es utilizar una placa madre que tenga un puerto
 PCIe. La idea es usar un hardware de bajo consto con los requerimientos mínimos
@@ -173,7 +174,7 @@ forma plg and play.
 La idea de conectar una RPi a la GPU se descarto completamente ya que la RPi no 
 tiene la arquitectura necesaria para que CUDA, el software de desarrollo de las GPU de Nvidia, funcione.
 
-\subsection*{Semana 4, del $03/02/14 al 06/02/14$}
+\subsection*{Semana 4, del 03/02/14 al 06/02/14}
 
 Esta semana se realizó una revisión de todas las ideas que estaban en el
 tapete. Nos dimos cuenta que estabamos dando vueltas y era necesario tener una
@@ -191,23 +192,35 @@ cluster. Hemos encontrado el ODROID. Es un computador muy barato para las
 grandes características que posee, es compatublible con el driver NVidia y
 CUDA.
 
-\subsection*{Semana 5, del $10/02/14 al 14/02/14$}
+\subsection*{Semana 5, del 10/02/14 al 14/02/14}
+\begin{comment}
+lunes
+-
+Ademas se realizó un estudio sobre como conectar el comptuador de una forma
+plug and play, las opciones son utilizar el puerto Ethernet o, mejor aún,
+realizar la conexión a trav\'es USB.
 
-Se compro el computador de bajo costo para realizar las primeras pruebas.
-Ademas se realizó un estudio sobre como conectar el comptuador de una forma plug
-and play, las opciones son utilizar el puerto Ethernet o, mejor aún, realizar la
-conexión a trav\'es USB.
+martes 
+- Reunion con el profesor para ver el estado del proyecto. 3 ideas
+  nuevas aparecieron.
 
-martes - Reunion con el profesor para ver el estado del proyecto. 3 ideas nuevas aparecieron.
+miercoles 
+- Contacto con un desarrollador de USB3380 para solicitar ayuda en el
+  campo. 
+- Estudio de RNDIS para conectar usb a usb, existe la posibilidad.
 
-miercoles - Contacto con un desarrollador de USB3380 para solicitar ayuda en el campo. . Estudio de RNDIS para conectar usb a usb, existe la posibilidad.
+jueves 
+- Estudio del funcionamiento de usb. Aprendi que podemos utilizar el
+  computador como gadget y realizar la configuración recompilando el kernel y
+  agregando los drivers.Mas detalles leer Linux Gadget Drivers
+- Aún falta el cable. 
+- Compilación del kernel para agregar los módulos. Estamos a la espera
+  del cable USB macho macho.
 
-jueves - estudio del funcionamiento de usb. Aprendi que podemos utilizar el computador 
-como gadget y realizar la configuración recompilando el kernel y agregando los drivers.
-Aún falta el cable. Mas detalles leer Linux Gadget Drivers. 
-Compilación del kernel para agregar los módulos. Estamos a la espera del cable USB macho macho.
-
-viernes
+viernes 
+- Update del proyecto al profesor Claudio torres. 
+ - compramos cable USB 3.0, estamos a la espera del envío.
+\end{comment}
 \subsection*{Semana 6, del $17/02/14 al 21/02/14$}
 
 Se compro el computador de bajo costo para realizar las primeras pruebas.
