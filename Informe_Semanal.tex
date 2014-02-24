@@ -28,9 +28,9 @@
 \lhead{
 \chead{
 \rhead{\bfseries Informe Semanal de Actividades Realizadas }
-\lfoot{From: K. Grant}
-\cfoot{To: Dean A. Smith}
-\rfoot{\thepage}
+\lfoot{\thepage}
+\cfoot{}
+\rfoot{Firma Supervisor: \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
 }}
@@ -119,21 +119,11 @@ tiene la arquitectura necesaria para que CUDA, el software de desarrollo de las 
 
 \subsection*{Semana 4, del 03/02/14 al 06/02/14}
 
-Esta semana se realizó una revisión de todas las ideas que estaban en el
-tapete. Nos dimos cuenta que estabamos dando vueltas y era necesario tener una
-nueva estrategia para resolver el problema. Decidimos volver a comenzar de
-nuevo, ya con las demás ideas descartadas. Ya que aún no hemos tenido
-respuestas satisfactorias sobre el controlador del USB3380 EVK, hemos decidido
-construir un computador barato que cumpla con los requerimientos para instalar
-la GT640 y CUDA. La idea sobre esto es tener un dispositivo portatil plug and
-play, para esto estudiaremos la posibilidad de realizar a traves del puerto usb
-o del ethernet. 
+Esta semana se realiza una revisión de todas las ideas previamente mencionadas. Se necesita una nueva estrategia porque el plan inicial comenzó a cambiar de rumbo. Con la alternativas previamente descartadas se decide comenzar de nuevo la investigación. Como aún no se tiene respuesta sobre el software controlador del USB3380-AB EVK-RC, se decide construir el computador de bajo costo, instalar la GT640 y CUDA. Por ahora nos centraremos en hacer funcionar el dispositivo a través del puerto USB de forma hot-plug. 
 
-Por otro lado en caso de que compremos la tarjeta USB3380 EVK y el desarrollo
-del driver sea ráido, hemos buscado computadores de bajo costo para realizar un
-cluster. Hemos encontrado el ODROID. Es un computador muy barato para las
-grandes características que posee, es compatublible con el driver NVidia y
-CUDA.
+No queda claro aún si es posible conectar o no a través del puerto USB, normalmente la conexión se realiza Host-to-Device (master/slave) pero en este caso se pretende realizar una conexión Host-to-Host. El protocolo normalmente no permite este tipo de conexión.
+
+Para esta semana aún no tenemos respuesta sobre USB3380-AB EVK-RC.
 
 \subsection*{Semana 5, del 10/02/14 al 14/02/14}
 \begin{comment}
