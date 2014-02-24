@@ -105,40 +105,17 @@ Finalmente para esta semana se concluye que no es posible la conexión de una ta
 
 \subsection*{Semana 3, del 27/01/14 al 31/01/14}
 
-Una de las nuevas estrategias es utilizar una placa madre que tenga un puerto
-PCIe. La idea es usar un hardware de bajo consto con los requerimientos mínimos
-para que la GT640 funcione. Para esto existen alternativas como placas madres
-Micro-ATX, Mini-ITX, Nano-ITX y Pico-ITX, claro está que a medido que la placa
-es más pequeña más costosa será. 
+Se propone utilizar placa madre que tenga un puerto PCIe, el computador tendrá los requerimientos mínimos para que la GT640 funcione, el trabajo será conectar este computador a otro como periférico USB. 
 
-Además, insvestigando hemos encontrado una solución muy parecida a lo que
-queremos, se trata de una tarjeta desarrollo de llamada Kayla, básicamente es
-un computador pequeño que reune todas las características para trabajar con la
-tarjeta GT640.  
+Por otro lado se ha encontrador una solución similar muy parecida a lo que queremos desarrollar, se trata de una tarjeta desarrollo de llamada \textbf{Kayla}, básicamente es un computador pequeño que reune todas las características para trabajar con la tarjeta GT640 en HPC pero los costos son elevados y la GT640 se compra por separado.   
 
-Se encontro otro dispositivo que en primera instancia cumple con nuestros
-requerimientos. La \textbf{USB3380EVB} es una tarjeta de desarrollo que tiene la
-version USB 3.0 del \textbf{USB2380} chip previamente mencionado. Esta tarjeta
-posee un slot PCIe 1x. Envíamos correos preguntando la factibilidad de nuestro
-proyecto.
+Mientras se estudia la posibilidad de conectar un computador como periferico USB, se sigue buscando alternativas que permitan conectar la GT640 de forma externa. Se encuentra un dispositivo la \textbf{USB3380-AB EVK-RC}, es una tarjeta de desarrollo que tiene la
+version USB 3.0 del USB2380 chip previamente mencionado. Esta tarjeta posee un slot PCIe 1x y hasta el momento es justamente lo que estamos buscando. Nos ponemos en contacto para saber más detalles del software necesario para el funcionamiento.
 
-Se encontro otra tarjeta de desarrollo, el \textbf{86 Duino plataform} la cual
-posee el puerto mPCIe el cual podemos utilizar con el adaptador
-\textbf{PE4L-PM060A}.
+Para el fin de la semana se tienen dos alternativas y cada una va por caminos diferentes. Primero se tiene la cotización del computador con los requerimientos mínimos y tenemos que estudiar la posibilidad de conexión USB como periférico a otro computador de forma hot-plug. Segundo es adquirir la USB3380-AB EVK-RC software necesario para nuestra aplicación.
 
-Hasta el momento tenemos las alternativas mencionada, realizamos el presupuesto y
-estamos a la espera de la desición.
-
-La alternativa más factible es comprar la \textbf{USB3380EV} y desarrollar el
-software necesario para nuestra aplicación. El problema es que el distribuidor
-esta de vacaciones por lo que tenemos que esperar hasta la próxima semana.
-
-Mientras estudiamos la posibilidad de utilizar un computador de bajo costo como
-interfaz entre la GPU y cualquier host. La conexión sería a trav\'es del USB de
-forma plg and play.
-
-La idea de conectar una RPi a la GPU se descarto completamente ya que la RPi no 
-tiene la arquitectura necesaria para que CUDA, el software de desarrollo de las GPU de Nvidia, funcione.
+Finalmente la idea de conectar la Raspberri Pi a la GT640 se descarto completamente ya que la Raspberry Pi no 
+tiene la arquitectura necesaria para que CUDA, el software de desarrollo de las GPU de NVIDIA, funcione.
 
 \subsection*{Semana 4, del 03/02/14 al 06/02/14}
 
