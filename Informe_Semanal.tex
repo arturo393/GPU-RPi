@@ -1,4 +1,3 @@
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Plantilla para un artculo en LaTeX en espaol.
@@ -75,64 +74,34 @@ Se redacta en lenguaje formal y atemporal (no usar formas verbales en pasado sim
 Compró el periódico y se tomó un café.
 \end{comment}
 
-La primera tarea para semana es investigar formas de conectar una GPU (GT640 NVdia Graphic Card Unit) a una Raspberry Pi (Single Board Computer). Hay que tener encuentra que la interfaz de la tarjeta gr\'afica es PCIe 3.0 16x y la Raspberry Pi tiene el puerto GPIO (General-Purpose Input/Output) y USB 2.0 disponibles. Por lo tanto la primera estrategia es investigar si existe alg\'un dispositivo que haga de adaptador entre PCIe 16x y USB 2.0. 
+La primera tarea para esta semana es investigar formas de conectar una GPU (GT640 NVIDIA Graphic Card Unit) a una Raspberry Pi (Single Board Computer). Hay que tener encuentra que la interfaz de la tarjeta gr\'afica es PCIe 3.0 16x y la Raspberry Pi tiene el puerto GPIO (General-Purpose Input/Output) y USB 2.0 disponibles. Por lo tanto la primera estrategia es investigar si existe alg\'un dispositivo que haga de adaptador entre PCIe 16x y USB 2.0. 
 
+Se propone conectar la GT640 a una tarjeta de desarrollo llamada \textbf{startKIT}, esta tarjeta posee una interfaz PCIe 1x y un puerto GPIO que se conecta facilmente a la Raspberry Pi. La idea es descartada porque no existen drivers para conectar una tarjeta de video, menos una NVIDIA, a este dispositivo. Además hay que desarrollar el driver para concetar la startKIT a la Raspberri Pi.
 
-Se propone utilizar la tarjeta de desarrollo startKIT, esta tarjeta
-particularmente posee una interfaz PCIe  1x la cual podemos utilizar.  Se
-propone esta idea porque la tarjeta startKIT se conecta fácilmente a la Rpi a
-travs del puerto GPIO.  Esta idea fue descartada porque los drivers de la
-interfaz PCIe solo existen para las sliceCARD, estas son tarjetas diseñas
-(WIFI, audio, etc.) especialmente para la startKIT. Para conectar la GPU
-debemos desarrollar nuestro propio controlador, el que no podemos realizar
-debido al limitado tiempo del proyecto.  
+Otra idea que se propone es estudiar el funcionamiento de los adaptadores de PCIe a USB, particularmente el funcionamiento del chip el chip \textbf{MCS9901-CC} ya que, eventualmente, se puede diseñar una placa que hace la interfaz entre PCIe y USB en el modo que queremos.
 
-La otra idea que surgió fue la de estudiar los adaptadores de PCIe a USB. Estos
-utilizan un chip para realizar la tarea el cual, eventualmente, podríamos
-utilizar y diseñar una placa para que cumpla nuestros requerimientos, es decir,
-conectar la tarjeta PCIe 16x al puerto USB 2.0. Se encontró el chip MCS9901-CC
-que es el encargado de realizar el puente entre estas interfaces.  
-
-Una tercera idea es usar un adaptador PCIe a mPCIe llamado PE4L-PM060.  La idea
-tras este adaptador es utilizarlo en caso de que se utilice una alternativa a
-la Rpi que tenga un puerto mPCIe lo cual es más facil de encontrar en el
-mercado.  Esta alternativa tambin fue descartada porque no cumple los
-requerimientos. Se encontró un dispositivo que potencialmente puede realizar lo
-que necesitamos. 
+La tercera idea que se propone es utilziar el adaptador de PCIe a Mini PCIe \textbf{PE4L-PM060}. La idea de este adaptador es utilizarlo en caso de que la Raspberry Pi no cuente con los requerimientos mínimos para conectarse a la GT640.
 
 \subsection*{Semana 2, del 20/01/14 al 24/01/14}
 
 Las tareas de esta semana consisten en seguir buscando otras alternativas ya que las
 anteriores han sido descartas por el momento.
 
-Investigando se encontró el dispositivo \textbf{USB2380}. USB2380 un controlador
-PCIe 1.0 a USB 2.0. El problema es que para nuestro propósito se necesitará
-desarrollar nuestro controlador. Por el momento creemos que esta solución esta
+Se encuentra el chip \textbf{USB2380}, un controlador
+PCIe 1.0 a USB 2.0. El problema es que para nuestro propósito, conectar la GT640 a través del puerto USB, se necesita
+desarrollar un controlador propio. Por el momento creemos que esta solución esta
 fuera de los objetivos principales, es más, aún no se posee información más
 detallada sobre el desarrollo de dicha tarjeta. Otro problema que es que no
-sabemos si podemos adquirir el dispositivo a tiempo para realizar pruebas.
+se sabe si podemos adquirir el dispositivo a tiempo para realizar pruebas ya que la compra se realiza en el extrangero.
 
-Como no se ha encontrado un adaptador directo entre PCIe y USB se decide por
+Hasta la fecha no se ha encontrado un adaptador directo entre PCIe y USB, por lo tanto se decide por
 estudiar la posibilidad de realizar una tarjeta que tenga ambas interfaces y que
-cumpla con nuestros requerimientos. Las posibilidades son : \textbf{MCS990} PCIe
-to 4-Port USB 2.0 Host Controller y \textbf{USB2380} PCIe 1.0 to USB 2.0
-controller.
+cumpla con nuestros requerimientos. Las posibilidades son: \textbf{MCS990} PCIe
+to 4-Port USB 2.0 Host Controller, este queda fuera porque no es posible realizar el adaptador,  y \textbf{USB2380} PCIe 1.0 to USB 2.0 controller aún se necesita buscar más información de como es el desarrollo del software controlador.
 
-Sin embargo en cualquier caso la conexión de cualquiera de estos dos dispositivos
-se realiza a través slot PCIe 1x. La GT640 tiene una interfaz PCIe 16x, esto no
-produce ningún problema ya que el protocolo PCIe, en este caso, se adapta al slot
-1x disminuyendo el ancho de banda.
+Miestras se contacta al desarrollador del chip USB2380 para más detalles se buscan otras alternavis para reemplazar la Raspberri Pi y que posean un slot PCIe. Se encuentra la tarjeta \textbf{SBC-A510 Single Board Computer}, esta tarjeta tiene un puerto mPCIe que podemos utilizar junto al adaptador \textbf{PE4L-PM060A}. Esta idea queda pendiente ya que la tarjeta es elevada y la idea principal es construir un dispositivo de bajo costo.
 
-Se descarto completamente la posibilidad de usar el chip \textbf{MCS9990} porque
-no cumple con los requerimientos.
-
-Otra alternativa que se encontro es el \textbf{SBC-A510 Single Board Computer}. Lo
-importante de esta tarjeta es que tiene un puerto mPCIe que podemos utilizar junto
-al adaptador \textbf{PE4L-PM060A}. Esta idea la dejamos en stand by.
-
-Por el momento no se puede conectar la RPi a una tarjeta PCIe. La nueva estrategia
-será encontrar formas de dejar la tarjeta gráfica como un periférico que pueda
-accederse desde un puerto USB asi como dispositvo plug and play.
+Finalmente para esta semana se concluye que no es posible la conexión de una tarjeta PCIe a la Raspberry Pi porque no cumple los requerimientos de hardware. A partir de la próxima semana la nueva estrategia será encontrar formas de que la GT640 actúe como un periférico USB con una conexión hot-plug.
 
 \subsection*{Semana 3, del 27/01/14 al 31/01/14}
 
@@ -221,19 +190,42 @@ viernes
 
 \subsection*{Semana 6, del 17/02/14 al 21/02/14}
 \begin{comment}
-lunes
-- Se adquirio el cable, se connecto pero no funciono. Se revisa si los módulos estan compilados.
--  Estudiar la posibilidad de crear un driver.
+lunes 
+- Se adquirio el cable, se connecto pero no funciono. Se revisa si los
+módulos estan compilados.  
+-  Estudiar la posibilidad de crear un driver.  
 - Se manda correo a lista-usb. Espera de respuesta.
 
-martes
--  No es posible conectar el cable usb entre PC. El hardware USB que traen los PCI no es soportado por el driver
-linux gadget que es el encargado de realizar esta conexión,
-- Hemos descartado la posibilidad de conectar PC to PC con un cable simple.  Decidimos realizar la conexión
-a través de ethernet.
-  
+martes -  No es posible conectar el cable usb entre PC. El hardware USB que
+traen los PCI no es soportado por el driver linux gadget que es el encargado de
+realizar esta conexión, 
+- Hemos descartado la posibilidad de conectar PC to PC
+con un cable simple.  Decidimos realizar la conexión a través de ethernet.
+
+miercoles 
+- NAAAAAAAAAAAAADAAAAAAAAAAAAAAA 
+
+jueves 
+- NNNNNNNNNNNNAAAAAAAAAAAADAAAAAAAaaaa 
+viernes 
+- NAAAAAAAAAAAAAAAADAAAAAAAAAAAa
+
 \end{comment}
 
+\subsection*{Semana 6, del 24/02/14 al 28/02/14}
+\begin{comment}
+
+lunes
+- Se decide por comprar la tarjeta desarrollo USB33880 , Claudio Torres no
+escucha nuestras advertencias de que hay que realiar el driver completamente y
+aún asi decide comprarla. Francisco nos pide que le mandemos el valor para que
+la Universidad realice la compra, el producto no es disponible. Mantemos al
+tanto a Torres sobre el problema, no sabemos que hacer.  Por mientras cada uno
+hace lo suyo.
+-  
+
+lunes
+\end{comment}
 
 \end{document}
 
