@@ -156,37 +156,39 @@ viernes
 
 Se realiza una reunión para analizar el estado del proyecto, tres nuevas ideas surgen. Primero, seguir insistiendo por el  USB3380-AB EVK-RC ya que en el mejor de los casos podríamos conectar la GT640 y que la reconozca como dispositivo externo. Segundo, en el caso de que se necesite desarrollar un driver completo para la tarjeta GT640, ponernos en conctacto con los desarrolladores del controlador libre de NVIDIA para la plataforma Linux y ver la posibilidad de utilizar parte de este driver para conectar la tarjeta. Tercero, en caso de no poder conectar el computador como periférico USB, la solución sera conectarlo a través de la interfaz Ethernet.
 
-Se estudia la posibilidad de montar un servidor \textbf{RNDIS} (Remote Network Driver Interface Specification) en el computador periférico para que simule una conexión Ethernet encapsulada en la comunicación USB. Otra posibilidad es utilizar los \textbf{linux gadget drivers}, esta característica la traen dispositivos especiales, tambíen podría ser una opción pero se necesita más estudio al respecto.
+Se estudia la posibilidad de montar un servidor \textbf{RNDIS} (Remote Network Driver Interface Specification) en el computador periférico para que simule una conexión Ethernet encapsulada en la comunicación USB. Otra posibilidad es utilizar los \textbf{linux gadget drivers}, esta característica la traen dispositivos especiales como \textbf{SoC}(System on a Chip), tambíen podría ser una opción pero se necesita más estudio al respecto ya que un computador no cumple con estas características.
 
 Se realiza la compra de un cable USB macho a USB macho con el que conectaremos ambos computadores.
 
 Para esta semana aún no tenemos respuesta sobre USB3380-AB EVK-RC.
 
-
-
 \subsection*{Semana 6, del 17/02/14 al 21/02/14}
 \begin{comment}
-lunes 
+LUNES 
 - Se adquirio el cable, se connecto pero no funciono. Se revisa si los
 módulos estan compilados.  
--  Estudiar la posibilidad de crear un driver.  
+- Estudiar la posibilidad de crear un driver.  
 - Se manda correo a lista-usb. Espera de respuesta.
-
-martes -  No es posible conectar el cable usb entre PC. El hardware USB que
+MARTES 
+- No es posible conectar el cable usb entre PC. El hardware USB que
 traen los PCI no es soportado por el driver linux gadget que es el encargado de
 realizar esta conexión, 
 - Hemos descartado la posibilidad de conectar PC to PC
 con un cable simple.  Decidimos realizar la conexión a través de ethernet.
-
-miercoles 
+MIERCOLES 
 - NAAAAAAAAAAAAADAAAAAAAAAAAAAAA 
-
-jueves 
+JUEVES 
 - NNNNNNNNNNNNAAAAAAAAAAAADAAAAAAAaaaa 
-viernes 
+VIERNES 
 - NAAAAAAAAAAAAAAAADAAAAAAAAAAAa
-
 \end{comment}
+
+Para esta semana ya se tiene el cable USB macho USB macho con el que podemos hacer las pruebas. Se decarta la posibilidad de usar RNDIS y linux gadget driver porque el chip USB del computador que se pretende usar como periferico no soporta niguna de estas características, para este chip solo existen driver que actúen como HOST. Por lo tanto, no es posible realizar la conexión Host-to-Host a través del puerto USB. 
+
+Se deja funcionando un servidor DHCP en el computador perfiférico para que cualquiera que se conecte pueda hacerlo autómaticamente a través de la interfa Ethernet utilizando el protocolo SSH.
+
+Por el momento se investiga el desarrollo de drivers para la tarjeta USB3380 ya que es la opción que finalmente queda. Nos comunicamos con el vendedor, nos dice que debemos desarrollar completamente el driver y que no existe trabajo alguno para este tipo de hardware.
+
 
 \subsection*{Semana 7, del 24/02/14 al 28/02/14}
 \begin{comment}
@@ -198,10 +200,15 @@ aún asi decide comprarla. Francisco nos pide que le mandemos el valor para que
 la Universidad realice la compra, el producto no es disponible. Mantemos al
 tanto a Torres sobre el problema, no sabemos que hacer.  Por mientras cada uno
 hace lo suyo.
--  
 
-lunes
+martes
+- Se envía correo preguntado por el stock, efectivamente hay y los problemas son de la página web. La respuesta fue que intentaramos de nuevo y si teníamos problemas que avisaramos. La página tiene problemas y ya dimos el aviso, estamos a la espera.
+
+miercoles
+-
 \end{comment}
+
+\subsection*{Semana 8, del 03/03/14 al 07/03/14}
 
 \end{document}
 
