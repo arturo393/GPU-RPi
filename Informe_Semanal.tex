@@ -127,9 +127,6 @@ Para esta semana aún no tenemos respuesta sobre USB3380-AB EVK-RC.
 
 \subsection*{Semana 5, del 10/02/14 al 14/02/14}
 \begin{comment}
-
-Se realiza una reunión para analizar el estado del proyecto, tres nuevas ideas surgen. Primero, seguir insistiendo por el  USB3380-AB EVK-RC ya que en el mejor de los casos podríamos conectar la GT640 y que la reconozca como dispositivo externo. Segundo, en el caso de que se necesite desarrollar un driver completo para la tarjeta GT640, ponernos en conctacto con los desarrolladores del controlador libre de NVIDIA para la plataforma Linux y ver la posibilidad de utilizar parte de este driver para conectar la tarjeta. Tercero, en caso de no poder conectar 
-
 lunes
 - Ademas se realizó un estudio sobre como conectar el comptuador de una forma
 plug and play, las opciones son utilizar el puerto Ethernet o, mejor aún,
@@ -156,6 +153,15 @@ viernes
 - Update del proyecto al profesor Claudio torres. 
  - compramos cable USB 3.0, estamos a la espera del envío.
 \end{comment}
+
+Se realiza una reunión para analizar el estado del proyecto, tres nuevas ideas surgen. Primero, seguir insistiendo por el  USB3380-AB EVK-RC ya que en el mejor de los casos podríamos conectar la GT640 y que la reconozca como dispositivo externo. Segundo, en el caso de que se necesite desarrollar un driver completo para la tarjeta GT640, ponernos en conctacto con los desarrolladores del controlador libre de NVIDIA para la plataforma Linux y ver la posibilidad de utilizar parte de este driver para conectar la tarjeta. Tercero, en caso de no poder conectar el computador como periférico USB, la solución sera conectarlo a través de la interfaz Ethernet.
+
+Se estudia la posibilidad de montar un servidor \textbf{RNDIS} (Remote Network Driver Interface Specification) en el computador periférico para que simule una conexión Ethernet encapsulada en la comunicación USB. Otra posibilidad es utilizar los \textbf{linux gadget drivers}, esta característica la traen dispositivos especiales, tambíen podría ser una opción pero se necesita más estudio al respecto.
+
+Se realiza la compra de un cable USB macho a USB macho con el que conectaremos ambos computadores.
+
+Para esta semana aún no tenemos respuesta sobre USB3380-AB EVK-RC.
+
 
 
 \subsection*{Semana 6, del 17/02/14 al 21/02/14}
